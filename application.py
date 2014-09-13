@@ -29,13 +29,20 @@ app = Flask(__name__)
 
 from flask import render_template
 
+#I am trying to figure out how to get the form data
+from flask import request
+
+
 #What I am trying to do here is take the original python program that
 #worked in console and make it work with Flask.  
 @app.route('/', methods=['GET', 'POST'])
 def story_generation():    
 
 #Initializing my basic form or persistance which is a list
-    a = ['This is the beginning of the story']
+    line = 'This is the beginning of the story'
+    
+    if request.method == 'POST':
+        line = request.form['line'] 
 
 #The range can be changed to make a longer story but this
 #code only works in the interpreter.  I need to update it 
@@ -49,7 +56,7 @@ def story_generation():
 
 #Commenting out the return statement to include the jinja2 template    
 #    return "\n".join(a)
-    return render_template('index.html')
+    return render_template('index.html', line = line)
     
 #Ensuring the script does not run from an imported module
 #And enabling debugging which must be disabled on a production
