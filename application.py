@@ -39,10 +39,12 @@ from flask import request
 def story_generation():    
 
 #Initializing my basic form or persistance which is a list
-    line = 'This is the beginning of the story'
+    line = 'You are the first contributer and can start the first line'
+    lines = []
     
     if request.method == 'POST':
         line = request.form['line'] 
+        lines.append(line)
 
 #The range can be changed to make a longer story but this
 #code only works in the interpreter.  I need to update it 
@@ -56,7 +58,7 @@ def story_generation():
 
 #Commenting out the return statement to include the jinja2 template    
 #    return "\n".join(a)
-    return render_template('index.html', line = line)
+    return render_template('index.html', line = line, lines = lines)
     
 #Ensuring the script does not run from an imported module
 #And enabling debugging which must be disabled on a production
