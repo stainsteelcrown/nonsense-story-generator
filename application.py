@@ -42,7 +42,7 @@ def story_generation():
 #to work with Flask and make this a web application but
 #the logic is there
     for i in range(0, 3):
-        return a[i]
+        return render_template('index.html') 
         nextLine = raw_input()
         a.append(nextLine)
         os.system('clear')
