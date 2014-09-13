@@ -33,8 +33,8 @@ from flask import render_template
 from flask import request
 
 
-#What I am trying to do here is take the original python program that
-#worked in console and make it work with Flask.  
+#I am attempting to store information in the list Lines but it keeps
+#getting overwritten everytime I post.
 @app.route('/', methods=['GET', 'POST'])
 def story_generation():    
 
@@ -46,23 +46,12 @@ def story_generation():
         line = request.form['line'] 
         lines.append(line)
 
-#The range can be changed to make a longer story but this
-#code only works in the interpreter.  I need to update it 
-#to work with Flask and make this a web application but
-#the logic is there
-#    for i in range(0, 3):
-#        return render_template('index.html') 
-#        nextLine = raw_input()
-#        a.append(nextLine)
-#        os.system('clear')
-
-#Commenting out the return statement to include the jinja2 template    
-#    return "\n".join(a)
     return render_template('index.html', line = line, lines = lines)
     
 #Ensuring the script does not run from an imported module
 #And enabling debugging which must be disabled on a production
-#server and can be commented out.
+#server and can be commented out, eventually I will put this in a 
+#configuration file.
 if __name__ == '__main__':
     app.debug = True
     app.run()
