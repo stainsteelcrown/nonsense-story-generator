@@ -27,6 +27,8 @@ import os
 from flask import Flask
 app = Flask(__name__)
 
+from flask import render_template
+
 #What I am trying to do here is take the original python program that
 #worked in console and make it work with Flask.  
 @app.route('/')
@@ -45,7 +47,9 @@ def story_generation():
         a.append(nextLine)
         os.system('clear')
 
-    return "\n".join(a)
+#Commenting out the return statement to include the jinja2 template    
+#    return "\n".join(a)
+    return render_template('index.html')
     
 #Ensuring the script does not run from an imported module
 #And enabling debugging which must be disabled on a production
