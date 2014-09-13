@@ -31,7 +31,7 @@ from flask import render_template
 
 #What I am trying to do here is take the original python program that
 #worked in console and make it work with Flask.  
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def story_generation():    
 
 #Initializing my basic form or persistance which is a list
@@ -41,11 +41,11 @@ def story_generation():
 #code only works in the interpreter.  I need to update it 
 #to work with Flask and make this a web application but
 #the logic is there
-    for i in range(0, 3):
-        return render_template('index.html') 
-        nextLine = raw_input()
-        a.append(nextLine)
-        os.system('clear')
+#    for i in range(0, 3):
+#        return render_template('index.html') 
+#        nextLine = raw_input()
+#        a.append(nextLine)
+#        os.system('clear')
 
 #Commenting out the return statement to include the jinja2 template    
 #    return "\n".join(a)
