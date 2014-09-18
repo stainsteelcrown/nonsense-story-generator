@@ -1,4 +1,4 @@
-application.config
+app.config
 *.pyc
 development.config
 .elasticbeanstalk/

@@ -24,22 +24,21 @@
 import os
 
 # Imported a Flask class and created an instance of the class
-from flask import Flask
+# as well as get the template and get form data.
+from flask import Flask,render_template,request
 app = Flask(__name__)
-
-from flask import render_template
-
-# I am trying to figure out how to get the form data
-from flask import request
 
 # Default config values 
 FLASK_DEBUG = 'false' if os.environ.get('FLASK_DEBUG') is None else os.environ.get('FLASK_DEBUG')
 
+# I am trying to figure out how to point the file to APP_CONFIG
+app.config.from_object('app.config')
+
 # Load config values specified above
-application.config.from_envvar('APP_CONFIG', silent=True)
+app.config.from_envvar('APP_CONFIG')
 
 # Only enable Flask debugging if an env var is set to true
-application.debug = application.config['FLASK_DEBUG'] in ['true', 'True']
+app.debug = app.config['FLASK_DEBUG'] in ['true', 'True']
 
 
 # I am attempting to store information in the list Lines but it keeps

@@ -8,6 +8,10 @@
 
   <body>
     <h1>Nonsense Story App</h1>
+    {% if flask_debug %}
+    <div class="alert alert-danger">
+      Flask is in debug mode. This is not safe for production
+    </div>
     <form method="post">
       <div>{{line}}</div>
         <label>
