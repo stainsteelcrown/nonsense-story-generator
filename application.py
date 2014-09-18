@@ -32,6 +32,15 @@ from flask import render_template
 #I am trying to figure out how to get the form data
 from flask import request
 
+# Default config values 
+FLASK_DEBUG = 'false' if os.environ.get('FLASK_DEBUG') is None else os.environ.get('FLASK_DEBUG')
+
+# Load config values specified above
+application.config.from_envvar('APP_CONFIG', silent=True)
+
+# Only enable Flask debugging if an env var is set to true
+application.debug = application.config['FLASK_DEBUG'] in ['true', 'True']
+
 
 #I am attempting to store information in the list Lines but it keeps
 #getting overwritten everytime I post.
